@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+{% block content %}
+ <div class="mydiv">
+     <form  class="myform" method="POST">
+         <h5 class="text-decoration-underline">Login here</h5>
+ {% csrf_token %}
+       <input type="text" name="username" placeholder="username" class="form-control" required="required"><br>
+         <input type="password" name="password" placeholder="password" class="form-control" required="required"><br>
+            <button class="btn btn-success" type="submit">log in</button>
+             <p>dont have account yet?<a href="{% url 'RegisterView'%}" >Sign-in</a></p>
+         <div class="errors">
+          {% for message in messages %}
+     <p>{{ message }}</p>
+             {% endfor %}
+          <p class="text-danger"> {{ form.errors }}</p>
+         </div>
+     </form>
+    </div>
+    </div>
+
+     <style>
+     h5{
+         margin-bottom: 20px;
+     }
+    .mydiv{
+        margin-top: 50px;
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .myform{
+        display: grid;
+        width: 350px;
+        padding: 30px;
+        border: 2px solid #0f5132;
+    }
+    .btn{
+        margin-top: 5px;
+    }
+    .errors{
+        color: red;
+        font-weight: lighter;
+    }
+    </style>
+{% endblock %}
+</body>
+</html>

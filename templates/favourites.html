@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>favourites</title>
+    <script src="https://kit.fontawesome.com/9674323289.js" crossorigin="anonymous"></script>
+</head>
+<body>
+{% block content %}
+    <div class="card-group">
+        {% for fav in fav %}
+
+        <div class="col-12 col-sm-6  col-lg-6 col-xl-3 p-2">
+  <div class="card">
+    <img src="{{fav.image}}" class="card-img-top" alt="..." height="200px" style="object-fit: contain;margin-top: 5px">
+    <div class="card-body">
+      <h5 class="card-title" style="text-align: center">{{fav.name}}</h5>
+        <a href="{% url 'delete' fav.id %}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+    </div>
+  </div>
+            </div>
+        {% endfor %}
+</div>
+<style>
+    .card-group{
+        margin-top: 50px;
+    }
+</style>
+
+
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>register page</title>
+</head>
+<body>
+{% block content %}
+    <div class="mydiv">
+ <form method="post" class="myform">
+ <h5 class="text-decoration-underline">Create Account</h5>
+     {% csrf_token %}
+   {% for field in form%}
+             <label>{{ field.label_tag }}</label>
+             {{ field}}
+         {% endfor %}
+     <button class="btn btn-success" type="submit">Create account</button>
+ <p>Already have an account?<a href="{% url 'loginpage' %}">Login</a></p>
+<h6 class="errors">{{ form.errors }}</h6>
+ </form>
+    </div>
+    <style>
+    .mydiv{
+        margin-top: 50px;
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .myform{
+        display: grid;
+        width: 350px;
+        padding: 30px;
+        border: 2px solid #0f5132;
+    }
+    .btn{
+        margin-top: 5px;
+    }
+    .errors{
+        color: red;
+        font-weight: lighter;
+    }
+    </style>
+{% endblock %}
+</body>
+</html>
